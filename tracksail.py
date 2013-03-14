@@ -10,6 +10,7 @@ def _float(v):
 class Tracksail(object):
     def __init__(self):
         self._socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self._rudderPos = 0
 
     def connect(self, host='localhost', port=5555):
         self._socket.connect((host, port))
@@ -30,20 +31,29 @@ class Tracksail(object):
         return _float(self._send_command('get compass'))
 
     @property
-    def sail(self):
+    def sailPosition(self):
         return _float(self._send_command('get sail'))
 
-    @sail.setter
-    def sail(self, value):
+    @sailPosition.setter
+    def sailPosition(self, value):
         print 'set sail {}'.format(int(value))
         self._send_command('set sail {}'.format(int(value)))
+
+    @property
+    def rudderPosition(self):
+        return self._rudderPos
+
+    @rudderPosition.setter
+    def sailPosition(self, value):
+        print 'set rudder {}'.format(int(value))
+        self._send_command('set rudder {}'.format(int(value)))
 
 
 if __name__ == '__main__':
     t = Tracksail()
     t.connect()
     print t.windDirection
-    print t.sail
-    t.sail = 10
-    print t.sail
+    print t.sailPosition
+    t.sailPosition = 320
+    print t.sailPosition
     t.close()
