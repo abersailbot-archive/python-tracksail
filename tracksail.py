@@ -44,7 +44,7 @@ class Tracksail(object):
         return _float(self._send_command('get wind_dir'))
 
     @property
-    def compass(self):
+    def bearing(self):
         return _float(self._send_command('get compass'))
 
     @property
@@ -71,6 +71,15 @@ class Tracksail(object):
     @property
     def waypoint(self):
         return self._waypoint
+
+    @property
+    def latitude(self):
+        return self._send_command('get northing')
+
+    @property
+    def longitude(self):
+        return self._send_command('get easting')
+
 
 if __name__ == '__main__':
     t = Tracksail()
