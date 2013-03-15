@@ -69,12 +69,9 @@ class Tracksail(object):
         return self._rudderPos
 
     @rudderPosition.setter
-    def sailPosition(self, value):
+    def rudderPosition(self, value):
         print 'set rudder {}'.format(int(value))
         self._send_command('set rudder {}'.format(int(value)))
-
-    def next_waypoint(self):
-        self._send_command('set waypoint')
 
     @property
     def waypoint(self):
