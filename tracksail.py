@@ -8,9 +8,26 @@ def _float(v):
         return None
 
 class Tracksail(object):
+    class _Waypoint(object):
+        def __init__(self, tracksail):
+            self.tracksail = tracksail
+        
+        @property
+        def direction(self):
+            return self.tracksail._send_command('get waypointdir')
+
+        @property
+        def number(self):
+            return self.tracksail._send_command('get waypointnum')
+
+        @property
+        def distance(self):
+            return self.tracksail._send_command('get waypointdist')
+
     def __init__(self):
         self._socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self._rudderPos = 0
+        self._waypoint = self._Waypoint(self)
 
     def connect(self, host='localhost', port=5555):
         self._socket.connect((host, port))
@@ -51,6 +68,10 @@ class Tracksail(object):
     def next_waypoint(self):
         self._send_command('set waypoint')
 
+    @property
+    def waypoint(self):
+        return self._waypoint
+
 if __name__ == '__main__':
     t = Tracksail()
     t.connect()
@@ -58,4 +79,6 @@ if __name__ == '__main__':
     print t.sailPosition
     t.sailPosition = 320
     print t.sailPosition
+    print t.waypoint
+    print t.waypoint.direction
     t.close()
