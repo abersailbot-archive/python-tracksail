@@ -44,6 +44,7 @@ class Tracksail(object):
         return self._socket.recv(256)
 
     def close(self):
+        print 'closing connection to tracksail...'
         self._socket.close()
 
     @property
