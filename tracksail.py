@@ -11,6 +11,13 @@ class Tracksail(object):
     class _Waypoint(object):
         def __init__(self, tracksail):
             self.tracksail = tracksail
+
+        def __str__(self):
+            return 'distance: {}m, waypoint #{}, direction: {}'.format(
+                                                                self.direction,
+                                                                self.number,
+                                                                self.distance
+                                                                      )
         
         @property
         def direction(self):
