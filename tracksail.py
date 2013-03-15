@@ -48,6 +48,8 @@ class Tracksail(object):
         print 'set rudder {}'.format(int(value))
         self._send_command('set rudder {}'.format(int(value)))
 
+    def next_waypoint(self):
+        self._send_command('set waypoint')
 
 if __name__ == '__main__':
     t = Tracksail()
