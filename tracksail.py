@@ -31,6 +31,9 @@ class Tracksail(object):
         def distance(self):
             return self.tracksail._send_command('get waypointdist')
 
+        def next(self):
+            self.tracksail._send_command('set waypoint')
+
     def __init__(self):
         self._socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self._rudderPos = 0
@@ -93,6 +96,8 @@ if __name__ == '__main__':
     print t.sailPosition
     t.sailPosition = 320
     print t.sailPosition
+    print t.waypoint
+    t.waypoint.next()
     print t.waypoint
     print t.waypoint.direction
     t.close()
