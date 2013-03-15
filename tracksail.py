@@ -9,6 +9,7 @@ def _float(v):
 
 class Tracksail(object):
     class _Waypoint(object):
+        """The target point"""
         def __init__(self, tracksail):
             self.tracksail = tracksail
 
@@ -40,6 +41,7 @@ class Tracksail(object):
         self._waypoint = self._Waypoint(self)
 
     def connect(self, host='localhost', port=5555):
+        """Connect to tracksail"""
         self._socket.connect((host, port))
 
     def _send_command(self, command):
@@ -47,6 +49,7 @@ class Tracksail(object):
         return self._socket.recv(256)
 
     def close(self):
+        """Close the connection to tracksail"""
         print 'closing connection to tracksail...'
         self._socket.close()
 
