@@ -18,7 +18,6 @@
 import socket
 
 def _float(v):
-    print 'coverting "%s"' % v
     if v:
         return float(v[:-1])
     else:
@@ -84,7 +83,6 @@ class Tracksail(object):
 
     @sailPosition.setter
     def sailPosition(self, value):
-        print 'set sail {}'.format(int(value))
         self._send_command('set sail {}'.format(int(value)))
 
     @property
@@ -93,7 +91,6 @@ class Tracksail(object):
 
     @rudderPosition.setter
     def rudderPosition(self, value):
-        print 'set rudder {}'.format(int(value))
         self._send_command('set rudder {}'.format(int(value)))
 
     @property
