@@ -15,9 +15,9 @@ class Tracksail(object):
 
         def __str__(self):
             return 'distance: {}m, waypoint #{}, direction: {}'.format(
-                                                                self.direction,
+                                                                self.distance,
                                                                 self.number,
-                                                                self.distance
+                                                                self.direction
                                                                       )
         
         @property
