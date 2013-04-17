@@ -1,7 +1,23 @@
+# Python wrapper to interface with Tracksail-AI
+
+# Copyright 2013 Louis Taylor
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 import socket
 
 def _float(v):
-    print 'converting "%s"' % v
     if v:
         return float(v[:-1])
     else:
@@ -67,7 +83,6 @@ class Tracksail(object):
 
     @sailPosition.setter
     def sailPosition(self, value):
-        print 'set sail {}'.format(int(value))
         self._send_command('set sail {}'.format(int(value)))
 
     @property
@@ -76,7 +91,6 @@ class Tracksail(object):
 
     @rudderPosition.setter
     def rudderPosition(self, value):
-        print 'set rudder {}'.format(int(value))
         self._send_command('set rudder {}'.format(int(value)))
 
     @property
