@@ -1,7 +1,7 @@
 import socket
 
 def _float(v):
-    print 'coverting "%s"' % v
+    print 'converting "%s"' % v
     if v:
         return float(v[:-1])
     else:
@@ -53,12 +53,12 @@ class Tracksail(object):
         print 'closing connection to tracksail...'
         self._socket.close()
 
-    @property
     def windDirection(self):
+        """Return the direction of the wind"""
         return _float(self._send_command('get wind_dir'))
 
-    @property
     def bearing(self):
+        """Return the bearing of the boat"""
         return _float(self._send_command('get compass'))
 
     @property
