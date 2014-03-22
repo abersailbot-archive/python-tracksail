@@ -69,6 +69,7 @@ class Tracksail(object):
         print 'closing connection to tracksail...'
         self._socket.close()
 
+    @property
     def windDirection(self):
         """Return the direction of the wind"""
         return _float(self._send_command('get wind_dir'))
